@@ -28,6 +28,8 @@ public class Greeting {
                 addDeadlineTask(instruction);
             } else if (instruction.startsWith("event")) {
                 addEventTask(instruction);
+            } else if (instruction.startsWith("delete")) {
+                deleteTask(instruction);
             } else {
                 System.out.println("OOPS!! I'm sorry, but I don't know what that means :-(");
             }
@@ -106,6 +108,15 @@ public class Greeting {
         tasks.add(newTask);
         counter ++;
         System.out.println("Got it. I've added this task: \n" + newTask);
+        System.out.println("Now you have " + counter + " tasks in the list");
+    }
+    public static void deleteTask(String task){
+        String[] input = task.split(" ");
+        int order = Integer.parseInt(input[1]);
+        Task taskToDelete = tasks.get(order - 1);
+        tasks.remove(taskToDelete);
+        counter --;
+        System.out.println("Noted. I've removed this task: \n" + taskToDelete);
         System.out.println("Now you have " + counter + " tasks in the list");
     }
 }
