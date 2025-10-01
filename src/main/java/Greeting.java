@@ -29,7 +29,7 @@ public class Greeting {
             } else if (instruction.startsWith("event")) {
                 addEventTask(instruction);
             } else {
-                System.out.println("Invalid command");
+                System.out.println("OOPS!! I'm sorry, but I don't know what that means :-(");
             }
         }
         exit();
@@ -66,9 +66,15 @@ public class Greeting {
         System.out.println("OK, I've marked this task as not done yet: \n" + taskToUnmark);
     }
     public static void addTodoTask(String task){
-        Task newTask = new Todo(task);
+        String[] input = task.split(" ", 2);
+        if(input.length < 2){
+            System.out.println("OOPS!!! The description of a todo cannot be empty");
+            return;
+        }
+        String taskToAdd = input[1];
+        Task newTask = new Todo(taskToAdd);
         tasks.add(newTask);
-        counter ++;
+        counter++;
         System.out.println("Got it. I've added this task: \n" + newTask);
         System.out.println("Now you have " + counter + " tasks in the list");
     }
@@ -85,6 +91,10 @@ public class Greeting {
         System.out.println("Now you have " + counter + " tasks in the list");
     }
     public static void addEventTask(String task){
+        if(!tasks.contains("/from") || !tasks.contains("/to")){
+            System.out.println("OOPS!!! Event date missing.");
+            return;
+        }
         String[] input = task.split(" /");
         String[] Activity = input[0].split(" ", 2);
         String act = Activity[1];
