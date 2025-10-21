@@ -1,8 +1,8 @@
 package main.java.model;
 
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 /**
  * Represents a Event Task
@@ -19,7 +19,7 @@ public class Event extends Task{
      * @param start         The time task start
      * @param end           The time task end
      */
-    public Event(String description, LocalDateTime start, LocalDateTime end){
+    public Event(String description, LocalDateTime start, LocalDateTime end) {
         super(description);
         this.start = start;
         this.end = end;

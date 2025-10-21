@@ -10,55 +10,38 @@ import main.java.command.ListCommand;
 import main.java.command.MarkCommand;
 import main.java.command.UnmarkCommand;
 
-/**
- * Parser a command input by user and process
- */
+
 public class CommandParser {
     private TaskService service;
     private ui ui;
 
-    /**
-     * Constructs a commandparser with task service and ui
-     *
-     * @param service  The taskservice that dealing with task operation
-     * @param ui       The ui part that out print messages
-     */
     public CommandParser(TaskService service, ui ui) {
         this.service = service;
         this.ui = ui;
     }
 
-    /**
-     * Process and run the command
-     */
-    public void run(){
+    public void run() {
         boolean isRunning = true;
         while(isRunning){
             String input = ui.readcommand();
             Command command = parseCommand(input);
 
-            if(command != null){
+            if (command != null) {
                 command.execute();
-                if (command.isExit()){
+                if (command.isExit()) {
                     isRunning = false;
                 }
-            }else{
+            } else {
                 ui.showError("I'm sorry, but I don't know what that means :-(");
             }
         }
     }
 
-    /**
-     * Read the input command
-     *
-     * @param input  The command user inputted
-     * @return A specific command
-     */
-    public Command parseCommand(String input){
+    public Command parseCommand(String input) {
         String[] parts = input.split(" ");
         String commandWord = parts[0];
         String arguments = "";
-        if (parts.length > 1){
+        if (parts.length > 1) {
              arguments = parts[1];
         }
         switch (commandWord) {

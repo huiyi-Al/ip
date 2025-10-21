@@ -1,9 +1,10 @@
 package main.java.model;
 
+
 /**
  * Represents a Todo Task
  */
-public class Todo extends Task{
+public class Todo extends Task {
 
     /**
      * Constructs a Todo task

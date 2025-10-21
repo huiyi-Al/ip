@@ -5,7 +5,7 @@ package main.java.model;
  * Each task contains a description of the task
  * The status of task
  */
-public abstract class Task{
+public abstract class Task {
     public String description;
     private boolean isDone;
 
