@@ -1,10 +1,22 @@
+package main.java;
+
+import main.java.ui.CommandParser;
+import main.java.ui.TaskService;
+import main.java.ui.ui;
+
+
+/**
+ * The main entry point of the robot
+ * With greeting and exiting functions
+ */
 public class Luka {
     public static void main(String[] args) {
-        String logo = " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo);
+        TaskService taskService = new TaskService();
+        ui ui = new ui();
+        CommandParser parser = new CommandParser(taskService, ui);
+
+        ui.greet();
+        parser.run();
+        ui.exit();
     }
 }
