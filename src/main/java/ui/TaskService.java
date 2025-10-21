@@ -5,36 +5,75 @@ import java.util.List;
 
 import main.java.model.Task;
 
+/**
+ * Some operations dealing with task
+ */
 public class TaskService {
     private List<Task> tasks = new ArrayList<>();
     private int counter = 0;
 
+    /**
+     * Get all the existing tasks
+     *
+     * @return the tasks
+     */
     public List<Task> getTasks() {
         return tasks;
     }
 
+    /**
+     * Returns task in a index
+     *
+     * @param index  index of task in tasklist
+     * @return the task
+     */
     public Task getTask(int index) {
         return tasks.get(index);
     }
 
+    /**
+     * Add a task to tasklist
+     *
+     * @param task  The task added
+     */
     public void addTask(Task task) {
         tasks.add(task);
         counter++;
     }
 
+    /**
+     * Remove a task in tasklist
+     *
+     * @param index  The index of task in tasklist to remove
+     */
     public Task removeTask(int index) {
         counter--;
         return tasks.remove(index);
     }
 
+    /**
+     * Get total number of task existed
+     *
+     * @return the current number of tasks
+     */
     public int getTaskCount() {
         return counter;
     }
 
+    /**
+     * Mark specific task as done
+     *
+     * @param index  The index of task to be marked
+     */
     public void markTask(int index) {
         tasks.get(index).markAsDone();
     }
 
+    /**
+     * Unmark specific task that been marked
+     *
+     * @param index  The index of task to be unmark
+     */
     public void unmarkTasks(int index) {
         tasks.get(index).unmark();
     }

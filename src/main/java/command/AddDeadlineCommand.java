@@ -7,7 +7,9 @@ import main.java.ui.DateTimeService;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
 
-
+/**
+ * Add command to support user add a task with specific deadline
+ */
 public class AddDeadlineCommand implements Command {
     private TaskService taskService;
     private ui ui;

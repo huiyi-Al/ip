@@ -3,6 +3,9 @@ package main.java.command;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
 
+/**
+ * Add command to support user checking TaskList
+ */
 public class ListCommand implements Command {
     private TaskService taskService;
     private ui ui;

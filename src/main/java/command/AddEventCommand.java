@@ -7,7 +7,9 @@ import main.java.ui.DateTimeService;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
 
-
+/**
+ * Add a command to support user to add a Event Task
+ */
 public class AddEventCommand implements Command {
     private TaskService taskService;
     private ui ui;

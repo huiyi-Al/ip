@@ -4,6 +4,10 @@ import main.java.ui.TaskService;
 import main.java.ui.ui;
 import main.java.ui.CommandParser;
 
+/**
+ * The main entry point of the robot
+ * With greeting and exiting functions
+ */
 public class Main {
     public static void main(String[] args) {
         TaskService taskService = new TaskService();

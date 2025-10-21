@@ -3,6 +3,9 @@ package main.java.command;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
 
+/**
+ * Add command for user to mark Task in a specific index as not done
+ */
 public class UnmarkCommand implements Command {
     private TaskService taskService;
     private ui ui;

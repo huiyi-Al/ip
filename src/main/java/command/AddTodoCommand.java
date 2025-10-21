@@ -4,6 +4,9 @@ import main.java.ui.TaskService;
 import main.java.ui.ui;
 import main.java.model.Todo;
 
+/**
+ * Add command that support user to add a Todo Task
+ */
 public class AddTodoCommand implements Command {
     private TaskService taskService;
     private ui ui;

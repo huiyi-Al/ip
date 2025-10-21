@@ -3,6 +3,9 @@ package main.java.command;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
 
+/**
+ * Add command that support user to delete Task added form tasklist
+ */
 public class DeleteCommand implements Command {
     private TaskService taskService;
     private ui ui;

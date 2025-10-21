@@ -2,6 +2,9 @@ package main.java.command;
 
 import main.java.ui.ui;
 
+/**
+ * Command to terminate running process
+ */
 public class ExitCommand implements Command {
     private ui ui;
 
