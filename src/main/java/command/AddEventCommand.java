@@ -36,15 +36,12 @@ public class AddEventCommand implements Command {
         }
 
         String description = parts[0];
-        String fromstring = parts[1];
-        String tostring = parts[2];
+        String from = parts[1];
+        String to = parts[2];
 
         if (description.isEmpty()) {
             ui.showError("Description cannot be empty!");
         }
-
-        LocalDateTime from = dateTimeService.parseDateTime(fromstring);
-        LocalDateTime to = dateTimeService.parseDateTime(tostring);
 
         Event event = new Event(description, from, to);
         taskService.addTask(event);

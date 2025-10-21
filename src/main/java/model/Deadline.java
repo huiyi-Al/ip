@@ -4,9 +4,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public class Deadline extends Task{
-    private LocalDate deadline;
+    private String deadline;
 
-    public Deadline(String description, LocalDate deadline){
+    public Deadline(String description, String deadline){
         super(description);
         this.deadline = deadline;
     }
@@ -15,13 +15,12 @@ public class Deadline extends Task{
         return "D";
     }
 
-    public void setDeadline(LocalDate deadline) {
-        this.deadline = deadline;
+    public String getDeadline() {
+        return deadline;
     }
 
     @Override
     public String toString() {
-        String formattedDate = deadline.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
-        return "[" + getType() + "]" + getStatus() + " " + description + " (by: " + formattedDate + ")";
+        return "[" + getType() + "]" + getStatus() + " " + description + " (by:" + deadline + ")";
     }
 }

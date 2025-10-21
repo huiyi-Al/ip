@@ -18,7 +18,7 @@ public class AddDeadlineCommand implements Command {
         this.taskService = taskService;
         this.ui = ui;
         this.arguments = arguments;
-        this.dateTimeService = new DateTimeService();
+        this.dateTimeService = dateTimeService;
     }
 
     @Override
@@ -29,16 +29,16 @@ public class AddDeadlineCommand implements Command {
         }
 
         String[] parts = arguments.split("/by", 2);
-        String description = parts[0];
-        String date = parts[1];
+        String description = parts[0].trim();
+        String date = parts[1].trim();
 
         if (description.isEmpty()) {
             ui.showError("Deadline description is empty");
             return;
         }
 
-        LocalDate by = dateTimeService.parseDate(date);
-        Deadline deadline = new Deadline(description, by);
+        String datetime = dateTimeService.outputDateTime(date);
+        Deadline deadline = new Deadline(description, datetime);
         taskService.addTask(deadline);
         ui.showTaskAdded(deadline, taskService.getTaskCount());
     }

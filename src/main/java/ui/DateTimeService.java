@@ -3,28 +3,45 @@ package main.java.ui;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Locale;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+import java.util.List;
 
 public class DateTimeService {
-    private LocalDate date = LocalDate.now();
-    private static final DateTimeFormatter INPUT_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("d/M/yyyy[ HHmm]");
-    private static final DateTimeFormatter OUTPUT_DATE_FORMATTER = DateTimeFormatter.ofPattern("MMM dd, yyyy");
-    private static final DateTimeFormatter OUTPUT_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("MMM DD YYYY, hh:mm:ss");
+    private LocalDate currentdate = LocalDate.now();
+    private static final List<DateTimeFormatter> SUPPORTED_FORMATTERS = Arrays.asList(
+            DateTimeFormatter.ofPattern("yyyy-MM-dd"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+            DateTimeFormatter.ofPattern("d/MM/yyyy"),
 
-    public LocalDate parseDate(String date) {
-        return LocalDate.parse(date, INPUT_DATETIME_FORMATTER);
-    }
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm"),
+            DateTimeFormatter.ofPattern("d/MM/yyyy HHmm")
+    );
 
-    public String formatDate(LocalDate date) {
-        return date.format(OUTPUT_DATE_FORMATTER);
-    }
+    private static final DateTimeFormatter OUTPUT_DATE = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+    private static final DateTimeFormatter OUTPUT_DATETIME = DateTimeFormatter.ofPattern("hh:mm, MMM dd, yyyy");
 
-    public LocalDateTime parseDateTime(String datetime) {
-        return LocalDateTime.parse(datetime, INPUT_DATETIME_FORMATTER);
-    }
+    public static String outputDateTime(String input) {
+        String trimmed = input.trim();
 
-    public String formatDateTime(LocalDateTime datetime) {
-        return datetime.format(OUTPUT_DATETIME_FORMATTER);
+        for (DateTimeFormatter formatter : SUPPORTED_FORMATTERS) {
+
+            try {
+                boolean hasTime = formatter.toString().contains("HH");
+
+                if (hasTime) {
+                    LocalDateTime dateTime = LocalDateTime.parse(trimmed, formatter);
+                    return dateTime.format(OUTPUT_DATETIME);
+                } else {
+                    LocalDate date = LocalDate.parse(trimmed, formatter);
+                    return date.format(OUTPUT_DATE);
+                }
+            } catch (DateTimeParseException e) {
+                continue;
+            }
+        }
+        return input;
     }
 
 }

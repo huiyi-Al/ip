@@ -17,6 +17,16 @@ public class TaskService {
         return tasks.get(index);
     }
 
+    public List<Task> searchTask(String taskName) {
+        List<Task> selectedTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.description.contains(taskName)) {
+                selectedTasks.add(task);
+            }
+        }
+        return selectedTasks;
+    }
+
     public void addTask(Task task) {
         tasks.add(task);
         counter++;
