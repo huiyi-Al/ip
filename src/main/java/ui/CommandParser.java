@@ -20,28 +20,28 @@ public class CommandParser {
         this.ui = ui;
     }
 
-    public void run(){
+    public void run() {
         boolean isRunning = true;
         while(isRunning){
             String input = ui.readcommand();
             Command command = parseCommand(input);
 
-            if(command != null){
+            if (command != null) {
                 command.execute();
-                if (command.isExit()){
+                if (command.isExit()) {
                     isRunning = false;
                 }
-            }else{
+            } else {
                 ui.showError("I'm sorry, but I don't know what that means :-(");
             }
         }
     }
 
-    public Command parseCommand(String input){
+    public Command parseCommand(String input) {
         String[] parts = input.split(" ");
         String commandWord = parts[0];
         String arguments = "";
-        if (parts.length > 1){
+        if (parts.length > 1) {
              arguments = parts[1];
         }
         switch (commandWord) {

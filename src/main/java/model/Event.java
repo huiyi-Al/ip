@@ -1,14 +1,14 @@
 package main.java.model;
 
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class Event extends Task{
+public class Event extends Task {
     private LocalDateTime start;
     private LocalDateTime end;
 
-    public Event(String description, LocalDateTime start, LocalDateTime end){
+    public Event(String description, LocalDateTime start, LocalDateTime end) {
         super(description);
         this.start = start;
         this.end = end;

@@ -1,8 +1,9 @@
 package main.java;
 
+import main.java.ui.CommandParser;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
-import main.java.ui.CommandParser;
+
 
 public class Main {
     public static void main(String[] args) {

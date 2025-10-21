@@ -1,15 +1,15 @@
 package main.java.command;
 
+import main.java.model.Todo;
 import main.java.ui.TaskService;
 import main.java.ui.ui;
-import main.java.model.Todo;
 
 public class AddTodoCommand implements Command {
     private TaskService taskService;
     private ui ui;
     private String arguments;
 
-    public AddTodoCommand(TaskService taskService, ui ui, String arguments){
+    public AddTodoCommand(TaskService taskService, ui ui, String arguments) {
         this.taskService = taskService;
         this.ui = ui;
         this.arguments = arguments;
@@ -17,7 +17,7 @@ public class AddTodoCommand implements Command {
 
     @Override
     public void execute() {
-        if (arguments.isEmpty()){
+        if (arguments.isEmpty()) {
             ui.showError("The description of a todo cannot be empty");
         }
         Todo todo = new Todo(arguments);

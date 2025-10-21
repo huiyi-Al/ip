@@ -1,6 +1,6 @@
 package main.java.model;
 
-public abstract class Task{
+public abstract class Task {
     public String description;
     private boolean isDone;
 

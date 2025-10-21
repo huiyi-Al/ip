@@ -1,12 +1,12 @@
 package main.java.model;
 
-import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
-public class Deadline extends Task{
+public class Deadline extends Task {
     private LocalDate deadline;
 
-    public Deadline(String description, LocalDate deadline){
+    public Deadline(String description, LocalDate deadline) {
         super(description);
         this.deadline = deadline;
     }
