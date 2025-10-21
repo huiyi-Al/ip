@@ -9,8 +9,8 @@ import java.time.LocalDateTime;
  * Each task contains both starting time and ending time
  */
 public class Event extends Task{
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private String start;
+    private String end;
 
     /**
      * Constructs a Event task
@@ -19,7 +19,7 @@ public class Event extends Task{
      * @param start         The time task start
      * @param end           The time task end
      */
-    public Event(String description, LocalDateTime start, LocalDateTime end) {
+    public Event(String description, String start, String end) {
         super(description);
         this.start = start;
         this.end = end;
@@ -40,7 +40,7 @@ public class Event extends Task{
      *
      * @return the starting time
      */
-    public LocalDateTime getStart() {
+    public String getStart() {
         return start;
     }
 
@@ -49,14 +49,12 @@ public class Event extends Task{
      *
      * @return the ending time
      */
-    public LocalDateTime getEnd() {
+    public String getEnd() {
         return end;
     }
 
     @Override
     public String toString() {
-        String formattedStart = start.format(DateTimeFormatter.ofPattern("MMM gg yyyy, HH:mm"));
-        String formattedEnd = end.format(DateTimeFormatter.ofPattern("MMM gg yyyy"));
-        return "[" + getType() + "]" + getStatus() + " " + description + " (from: " + formattedStart + " to: " + formattedEnd + ")";
+        return "[" + getType() + "]" + getStatus() + " " + description + " (from: " + start + " to:" + end + ")";
     }
 }

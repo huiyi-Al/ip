@@ -1,57 +1,56 @@
 package main.java.ui;
 
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Locale;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Support reading some specific string as date and time
  */
 public class DateTimeService {
-    private LocalDate date = LocalDate.now();
-    private static final DateTimeFormatter INPUT_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("d/M/yyyy[ HHmm]");
-    private static final DateTimeFormatter OUTPUT_DATE_FORMATTER = DateTimeFormatter.ofPattern("MMM dd, yyyy");
-    private static final DateTimeFormatter OUTPUT_DATETIME_FORMATTER = DateTimeFormatter.ofPattern("MMM DD YYYY, hh:mm:ss");
+    private LocalDate currentdate = LocalDate.now();
+    private static final List<DateTimeFormatter> SUPPORTED_FORMATTERS = Arrays.asList(
+            DateTimeFormatter.ofPattern("yyyy-MM-dd"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy"),
+            DateTimeFormatter.ofPattern("d/MM/yyyy"),
+
+            DateTimeFormatter.ofPattern("yyyy-MM-dd HHmm"),
+            DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm"),
+            DateTimeFormatter.ofPattern("d/MM/yyyy HHmm")
+    );
+
+    private static final DateTimeFormatter OUTPUT_DATE = DateTimeFormatter.ofPattern("MMM dd, yyyy");
+    private static final DateTimeFormatter OUTPUT_DATETIME = DateTimeFormatter.ofPattern("hh:mm, MMM dd, yyyy");
 
     /**
-     * Read string as date in a format
+     * Read input String as date and time and print in different format
      *
-     * @param date  A date user input as string
-     * @return Localdate in a format
+     * @param input  The string of date and time to be read
+     * @return date and time red
      */
-    public LocalDate parseDate(String date) {
-        return LocalDate.parse(date, INPUT_DATETIME_FORMATTER);
-    }
+    public static String outputDateTime(String input) {
+        String trimmed = input.trim();
 
-    /**
-     * Returns date in string
-     *
-     * @param date  A date in a specific format
-     * @return date in string
-     */
-    public String formatDate(LocalDate date) {
-        return date.format(OUTPUT_DATE_FORMATTER);
-    }
+        for (DateTimeFormatter formatter : SUPPORTED_FORMATTERS) {
 
-    /**
-     * Read string as date and time in a format
-     *
-     * @param datetime  A date with time  user input as string
-     * @return String representing date and time
-     */
-    public LocalDateTime parseDateTime(String datetime) {
-        return LocalDateTime.parse(datetime, INPUT_DATETIME_FORMATTER);
-    }
+            try {
+                boolean hasTime = formatter.toString().contains("HH");
 
-    /**
-     * Returns date and time  in string
-     *
-     * @param datetime  Date and time in a specific format
-     * @return date and time in string
-     */
-    public String formatDateTime(LocalDateTime datetime) {
-        return datetime.format(OUTPUT_DATETIME_FORMATTER);
+                if (hasTime) {
+                    LocalDateTime dateTime = LocalDateTime.parse(trimmed, formatter);
+                    return dateTime.format(OUTPUT_DATETIME);
+                } else {
+                    LocalDate date = LocalDate.parse(trimmed, formatter);
+                    return date.format(OUTPUT_DATE);
+                }
+            } catch (DateTimeParseException e) {
+                continue;
+            }
+        }
+        return input;
     }
 
 }

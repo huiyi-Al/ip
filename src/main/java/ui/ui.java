@@ -61,7 +61,7 @@ public class ui {
      */
     public void showTaskAdded(Task task, int totalTasks) {
         System.out.println("Got it. I've added this task: \n" + task);
-        System.out.println("Now you have" + totalTasks + "tasks in the list");
+        System.out.println("Now you have " + totalTasks + " tasks in the list");
     }
     
     /**
@@ -72,7 +72,7 @@ public class ui {
      */
     public void showTaskDeleted(Task task, int totalTasks) {
         System.out.println("Noted. I've removed this task: \n" + task);
-        System.out.println("Now you have" + totalTasks + "tasks in the list");
+        System.out.println("Now you have " + totalTasks + " tasks in the list");
     }
     
     /**
@@ -85,6 +85,16 @@ public class ui {
             System.out.println("No tasks found");
         }
         System.out.println("Here are the tasks in your list:");
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + "." + tasks.get(i));
+        }
+    }
+
+    public void showMatchingTask(java.util.List<Task> tasks){
+        if(tasks.isEmpty()){
+            System.out.println("No tasks found");
+        }
+        System.out.println("Here are the matching tasks in your list:");
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + "." + tasks.get(i));
         }

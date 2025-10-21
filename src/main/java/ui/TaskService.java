@@ -32,6 +32,22 @@ public class TaskService {
     }
 
     /**
+     * Get all tasks with its description contains given taskName
+     *
+     * @param taskName  The name target task contains
+     * @return all matched tasks
+     */
+    public List<Task> searchTask(String taskName) {
+        List<Task> selectedTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.description.contains(taskName)) {
+                selectedTasks.add(task);
+            }
+        }
+        return selectedTasks;
+    }
+
+    /**
      * Add a task to tasklist
      *
      * @param task  The task added
