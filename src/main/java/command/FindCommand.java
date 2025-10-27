@@ -1,7 +1,7 @@
-package main.java.command;
+package command;
 
-import main.java.ui.TaskService;
-import main.java.ui.ui;
+import ui.TaskService;
+import ui.ui;
 
 /**
  * Add command support finding task with a description
@@ -30,4 +30,11 @@ public class FindCommand implements Command {
         return false;
     }
 
+    @Override
+    public String toString() {
+        if (arguments.isEmpty()){
+            return "Please enter a task";
+        }
+        return ui.showMatchingTaskInString(taskService.searchTask(arguments));
+    }
 }

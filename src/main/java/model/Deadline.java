@@ -1,8 +1,4 @@
-package main.java.model;
-
-import java.time.format.DateTimeFormatter;
-import java.time.LocalDate;
-
+package model;
 
 /**
  * Represents a Deadline Task

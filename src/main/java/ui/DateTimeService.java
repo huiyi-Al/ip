@@ -1,4 +1,4 @@
-package main.java.ui;
+package ui;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -37,7 +37,7 @@ public class DateTimeService {
         for (DateTimeFormatter formatter : SUPPORTED_FORMATTERS) {
 
             try {
-                boolean hasTime = formatter.toString().contains("HH");
+                boolean hasTime = formatter.toString().contains("HHmm");
 
                 if (hasTime) {
                     LocalDateTime dateTime = LocalDateTime.parse(trimmed, formatter);

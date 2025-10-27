@@ -1,7 +1,7 @@
-package main.java.command;
+package command;
 
-import main.java.ui.TaskService;
-import main.java.ui.ui;
+import ui.TaskService;
+import ui.ui;
 
 /**
  * Add command to support user checking TaskList
@@ -23,5 +23,10 @@ public class ListCommand implements Command {
     @Override
     public boolean isExit(){
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return ui.showListTaskInString(taskService.getTasks());
     }
 }

@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 /**
  * Represents a task made by user
@@ -39,7 +39,7 @@ public abstract class Task {
      * @return the status
      */
     public String getStatus(){
-        return (isDone ? "[x]" : "[]");
+        return (isDone ? "[x]" : "[ ]");
     }
     public abstract String getType();
 

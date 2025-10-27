@@ -1,6 +1,6 @@
-package main.java.command;
+package command;
 
-import main.java.ui.ui;
+import ui.ui;
 
 /**
  * Command to terminate running process
@@ -20,5 +20,10 @@ public class ExitCommand implements Command {
     @Override
     public boolean isExit(){
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Bye.Hope to see you again soon!";
     }
 }

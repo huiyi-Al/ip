@@ -1,11 +1,11 @@
-package main.java.command;
+package command;
 
 import java.time.LocalDateTime;
 
-import main.java.model.Event;
-import main.java.ui.DateTimeService;
-import main.java.ui.TaskService;
-import main.java.ui.ui;
+import model.Event;
+import ui.DateTimeService;
+import ui.TaskService;
+import ui.ui;
 
 /**
  * Add a command to support user to add a Event Task
@@ -15,18 +15,20 @@ public class AddEventCommand implements Command {
     private ui ui;
     private String arguments;
     private DateTimeService dateTimeService;
+    private Event event;
 
     public AddEventCommand(TaskService taskService, ui ui, String arguments) {
         this.taskService = taskService;
         this.ui = ui;
         this.arguments = arguments;
         this.dateTimeService = new DateTimeService();
+        this.event = null;
     }
 
     @Override
     public void execute() {
         if (!arguments.contains("/from") || !arguments.contains("/to")) {
-            ui.showError("Deadline requires '/from' and '/to' parameter");
+            ui.showError("Event requires '/from' and '/to' parameter");
             return;
         }
 
@@ -45,7 +47,7 @@ public class AddEventCommand implements Command {
             ui.showError("Description cannot be empty!");
         }
 
-        Event event = new Event(description, from, to);
+        event = new Event(description, from, to);
         taskService.addTask(event);
         ui.showTaskAdded(event, taskService.getTaskCount());
     }
@@ -53,5 +55,23 @@ public class AddEventCommand implements Command {
     @Override
     public boolean isExit(){
         return false;
+    }
+
+    @Override
+    public String toString() {
+        if (!arguments.contains("/from") || !arguments.contains("/to")) {
+            return "Event requires '/from' and '/to' parameter";
+        }
+
+        String[] parts = arguments.split("/from|/to");
+
+        if (parts.length != 3) {
+            return "Invalid event format!\n" + "requires description, starting time and ending time";
+        }
+
+        int taskCount = taskService.getTaskCount();
+
+        return "Got it. I've added this task: \n" + event.toString() + "\n"
+                + "Now you have " + taskCount + " tasks in the list";
     }
 }

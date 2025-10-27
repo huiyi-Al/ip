@@ -1,11 +1,11 @@
-package main.java.command;
+package command;
 
 import java.time.LocalDate;
 
-import main.java.model.Deadline;
-import main.java.ui.DateTimeService;
-import main.java.ui.TaskService;
-import main.java.ui.ui;
+import model.Deadline;
+import ui.DateTimeService;
+import ui.TaskService;
+import ui.ui;
 
 /**
  * Add command to support user add a task with specific deadline
@@ -15,12 +15,14 @@ public class AddDeadlineCommand implements Command {
     private ui ui;
     private String arguments;
     private DateTimeService dateTimeService;
+    private Deadline deadline;
 
     public AddDeadlineCommand(TaskService taskService, ui ui, String arguments) {
         this.taskService = taskService;
         this.ui = ui;
         this.arguments = arguments;
-        this.dateTimeService = dateTimeService;
+        this.dateTimeService = new DateTimeService();
+        this.deadline = null;
     }
 
     @Override
@@ -40,7 +42,7 @@ public class AddDeadlineCommand implements Command {
         }
 
         String datetime = dateTimeService.outputDateTime(date);
-        Deadline deadline = new Deadline(description, datetime);
+        deadline = new Deadline(description, datetime);
         taskService.addTask(deadline);
         ui.showTaskAdded(deadline, taskService.getTaskCount());
     }
@@ -48,5 +50,22 @@ public class AddDeadlineCommand implements Command {
     @Override
     public boolean isExit(){
         return false;
+    }
+
+    @Override
+    public String toString() {
+        if (!arguments.contains("/by")) {
+            return "Deadline requires '/by' parameter";
+        }
+        String[] parts = arguments.split("/by", 2);
+        String description = parts[0].trim();
+        String date = parts[1].trim();
+
+        if (description.isEmpty()) {
+            return "Deadline description is empty";
+        }
+        int taskCount = taskService.getTaskCount();
+        return "Got it. I've added this task: \n" + deadline.toString() + "\n"
+                + "Now you have " + taskCount + " tasks in the list";
     }
 }

@@ -1,8 +1,6 @@
-package main.java;
-
-import main.java.ui.CommandParser;
-import main.java.ui.TaskService;
-import main.java.ui.ui;
+import ui.CommandParser;
+import ui.TaskService;
+import ui.ui;
 
 
 /**

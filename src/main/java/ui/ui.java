@@ -1,8 +1,8 @@
-package main.java.ui;
+package ui;
 
 import java.util.Scanner;
 
-import main.java.model.Task;
+import model.Task;
 
 /**
  * Some messages to print as output
@@ -98,5 +98,33 @@ public class ui {
         for (int i = 0; i < tasks.size(); i++) {
             System.out.println((i + 1) + "." + tasks.get(i));
         }
+    }
+
+    public String showListTaskInString(java.util.List<Task> tasks) {
+        if (tasks.isEmpty()) {
+            return "No tasks found";
+        }
+
+        StringBuilder result = new StringBuilder();
+        result.append("Here are the matching tasks in your list:\n");
+
+        for (int i = 0; i < tasks.size(); i++) {
+            result.append((i + 1) + "." + tasks.get(i) + "\n");
+        }
+        return result.toString();
+    }
+
+    public String showMatchingTaskInString(java.util.List<Task> tasks){
+        if(tasks.isEmpty()){
+            return "No tasks found";
+        }
+
+        StringBuilder result = new StringBuilder();
+        result.append("Here are the matching tasks in your list:\n");
+
+        for (int i = 0; i < tasks.size(); i++) {
+            result.append((i + 1) + "." + tasks.get(i) + "\n");
+        }
+        return result.toString();
     }
 }

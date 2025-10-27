@@ -1,9 +1,9 @@
-package main.java.ui;
+package ui;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.model.Task;
+import model.Task;
 
 /**
  * Some operations dealing with task
@@ -62,9 +62,9 @@ public class TaskService {
      *
      * @param index  The index of task in tasklist to remove
      */
-    public Task removeTask(int index) {
+    public void removeTask(int index) {
+        tasks.remove(index);
         counter--;
-        return tasks.remove(index);
     }
 
     /**

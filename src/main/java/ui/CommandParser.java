@@ -1,15 +1,15 @@
-package main.java.ui;
+package ui;
 
-import main.java.command.AddDeadlineCommand;
-import main.java.command.AddEventCommand;
-import main.java.command.AddTodoCommand;
-import main.java.command.Command;
-import main.java.command.DeleteCommand;
-import main.java.command.ExitCommand;
-import main.java.command.FindCommand;
-import main.java.command.ListCommand;
-import main.java.command.MarkCommand;
-import main.java.command.UnmarkCommand;
+import command.AddDeadlineCommand;
+import command.AddEventCommand;
+import command.AddTodoCommand;
+import command.Command;
+import command.DeleteCommand;
+import command.ExitCommand;
+import command.FindCommand;
+import command.ListCommand;
+import command.MarkCommand;
+import command.UnmarkCommand;
 
 
 public class CommandParser {
@@ -41,7 +41,7 @@ public class CommandParser {
     public Command parseCommand(String input){
         String[] parts = input.split(" ", 2);
         String commandWord = parts[0];
-        String arguments = " ";
+        String arguments = "";
         if (parts.length > 1){
              arguments = parts[1];
         }

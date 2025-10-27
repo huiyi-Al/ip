@@ -1,4 +1,4 @@
-package main.java.model;
+package model;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDate;
@@ -43,6 +43,7 @@ public class Event extends Task{
     public String getStart() {
         return start;
     }
+
 
     /**
      * Returns ending time of task
