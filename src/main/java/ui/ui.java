@@ -42,6 +42,11 @@ public class ui {
         System.out.println("Now you have " + taskcount + " tasks in the list");
     }
 
+    public void showTaskdeleted(Task task, int taskcount) {
+        System.out.println("Got it. I've removed this task: \n" + task);
+        System.out.println("Now you have " + taskcount + " tasks in the list");
+    }
+
     public void showTaskList(List<Task> taskList) {
         if(taskList.isEmpty()) {
             System.out.println("There is no task yet");

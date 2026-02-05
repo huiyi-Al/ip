@@ -22,6 +22,11 @@ public class TaskService {
         counter++;
     }
 
+    public void removeTask(Task task) {
+        tasks.remove(task);
+        counter--;
+    }
+
     public void markTask(int index) {
         tasks.get(index).markAsDone();
     }
