@@ -1,4 +1,6 @@
 package command;
 
-public class command {
+public interface Command {
+    void execute();
+    boolean isExit();
 }
