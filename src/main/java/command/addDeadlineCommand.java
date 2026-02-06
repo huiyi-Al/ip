@@ -1,6 +1,7 @@
 package command;
 
 import model.Deadline;
+import ui.DateTimeService;
 import ui.TaskService;
 import ui.ui;
 
@@ -9,12 +10,14 @@ public class addDeadlineCommand implements Command {
     private Deadline deadline;
     private ui ui;
     private String description;
+    private DateTimeService dateTimeService;
 
     public addDeadlineCommand(TaskService taskService, ui ui, String description) {
         this.taskService = taskService;
         this.ui = ui;
         this.description = description;
         this.deadline = null;
+        this.dateTimeService = new DateTimeService();
     }
 
     @Override
@@ -36,7 +39,9 @@ public class addDeadlineCommand implements Command {
             ui.showMessage("Deadline is empty");
             return;
         }
-        deadline = new Deadline(name, date);
+
+        String datetime = dateTimeService.outputDateTime(date);
+        deadline = new Deadline(name, datetime);
         taskService.addTask(deadline);
         ui.showTaskAdded(deadline, taskService.getCounter());
     }

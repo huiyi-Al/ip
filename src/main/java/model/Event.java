@@ -1,5 +1,6 @@
 package model;
 
+
 public class Event extends Task{
     private String startTime;
     private String endTime;

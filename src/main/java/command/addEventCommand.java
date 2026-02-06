@@ -1,6 +1,7 @@
 package command;
 
 import model.Event;
+import ui.DateTimeService;
 import ui.TaskService;
 import ui.ui;
 
@@ -9,12 +10,14 @@ public class addEventCommand implements Command {
     private ui ui;
     private Event event;
     private String description;
+    private DateTimeService dateTimeService;
 
     public addEventCommand(TaskService taskService, ui ui, String description) {
         this.taskService = taskService;
         this.ui = ui;
         this.description = description;
         this.event = null;
+        this.dateTimeService = new DateTimeService();
     }
 
     @Override
@@ -40,7 +43,9 @@ public class addEventCommand implements Command {
             return;
         }
 
-        event = new Event(name, start, end);
+        String startTime = dateTimeService.outputDateTime(start);
+        String endTime = dateTimeService.outputDateTime(end);
+        event = new Event(name, startTime, endTime);
         taskService.addTask(event);
         ui.showTaskAdded(event, taskService.getCounter());
     }
