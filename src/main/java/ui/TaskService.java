@@ -38,4 +38,14 @@ public class TaskService {
     public int getCounter() {
         return counter;
     }
+
+    public List<Task> searchTask(String taskName) {
+        List<Task> selectedTasks = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.description.contains(taskName)) {
+                selectedTasks.add(task);
+            }
+        }
+        return selectedTasks;
+    }
 }

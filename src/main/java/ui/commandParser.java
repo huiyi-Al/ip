@@ -1,6 +1,7 @@
 package ui;
 
 import command.DeleteCommand;
+import command.FindCommand;
 import command.addEventCommand;
 import command.addDeadlineCommand;
 import command.addTodoCommand;
@@ -60,6 +61,8 @@ public class commandParser {
             return new addEventCommand(taskService, ui, arguments);
         case "delete":
             return new DeleteCommand(taskService, ui, arguments);
+        case "find":
+            return new FindCommand(taskService, ui, arguments);
         default:
             return null;
         }

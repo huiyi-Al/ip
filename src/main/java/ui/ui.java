@@ -58,6 +58,18 @@ public class ui {
         }
     }
 
+    public void findTask(List<Task> taskList) {
+        if(taskList.isEmpty()) {
+            System.out.println("There is no task match");
+        } else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 1; i <= taskList.size(); i++) {
+                System.out.println(i + "." + taskList.get(i - 1));
+            }
+        }
+
+    }
+
     public void showMessage (String message) {
         System.out.println(message);
     }
