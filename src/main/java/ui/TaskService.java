@@ -18,7 +18,10 @@ public class TaskService {
 
     private void loadTasks() {
         List<Task> loadedTasks = storage.load();
-        tasks.addAll(loadedTasks);
+        for (Task task : loadedTasks) {
+            tasks.add(task);
+            counter++;
+        }
     }
 
     private void saveTasks() {
@@ -36,19 +39,23 @@ public class TaskService {
     public void addTask(Task task) {
         tasks.add(task);
         counter++;
+        saveTasks();
     }
 
     public void removeTask(Task task) {
         tasks.remove(task);
         counter--;
+        saveTasks();
     }
 
     public void markTask(int index) {
         tasks.get(index).markAsDone();
+        saveTasks();
     }
 
     public void unmarkTask(int index) {
         tasks.get(index).unmarkAsDone();
+        saveTasks();
     }
 
     public int getCounter() {
