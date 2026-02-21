@@ -29,4 +29,9 @@ public class Event extends Task{
     public String getType() {
         return "E";
     }
+
+    @Override
+    public String fileFormat() {
+        return getType() + " | " + getFIleStatus() + " | " + description + " | " + getStartTime() + " | " + getEndTime();
+    }
 }

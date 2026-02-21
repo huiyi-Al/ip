@@ -20,10 +20,18 @@ public abstract class Task {
         return (isDone ? "[X]" : "[ ]");
     }
 
+    public String getFIleStatus() {
+        return (isDone ? "1" : "0");
+    }
+
     public abstract String getType();
 
     @Override
     public String toString() {
         return "[" + getType() + "]" + getStatus() + " " + description;
+    }
+
+    public String fileFormat() {
+        return getType() + " | " + getFIleStatus() + " | " + description;
     }
 }

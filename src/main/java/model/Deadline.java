@@ -22,4 +22,9 @@ public class Deadline extends Task {
     public String getType() {
         return "D";
     }
+
+    @Override
+    public String fileFormat() {
+        return getType() + " | " + getFIleStatus() + " | " + description + " | " + getDeadline();
+    }
 }

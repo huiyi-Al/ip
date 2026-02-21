@@ -4,10 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Task;
+import Storage.Storage;
 
 public class TaskService {
     private List<Task> tasks = new ArrayList<>();
     private int counter = 0;
+    private Storage storage;
+
+    public TaskService(Storage storage) {
+        this.storage = storage;
+        loadTasks();
+    }
+
+    private void loadTasks() {
+        List<Task> loadedTasks = storage.load();
+        tasks.addAll(loadedTasks);
+    }
+
+    private void saveTasks() {
+        storage.save(tasks);
+    }
 
     public List<Task> getTasks() {
         return tasks;
