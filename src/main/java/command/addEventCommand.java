@@ -5,6 +5,10 @@ import ui.DateTimeService;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Add command that supports user to add task with starting and ending time
+ */
+
 public class addEventCommand implements Command {
     private TaskService taskService;
     private ui ui;

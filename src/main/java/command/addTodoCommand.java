@@ -4,6 +4,9 @@ import model.Todo;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Add command that supports user to add task with only description
+ */
 public class addTodoCommand implements Command{
     private TaskService taskService;
     private ui ui;

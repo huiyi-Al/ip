@@ -5,6 +5,10 @@ import ui.DateTimeService;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Add command that Support user to add a task with specific deadline
+ */
+
 public class addDeadlineCommand implements Command {
     private TaskService taskService;
     private Deadline deadline;
