@@ -4,6 +4,9 @@ import model.Todo;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Adds an unmarked task that has only description
+ */
 public class addTodoCommand implements Command{
     private TaskService taskService;
     private ui ui;

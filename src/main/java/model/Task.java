@@ -16,6 +16,10 @@ public abstract class Task {
         isDone = false;
     }
 
+    /**
+     * Get the status of the task.
+     * @return "[X]" if the status of the task is done, or "[]" otherwise.
+     */
     public String getStatus() {
         return (isDone ? "[X]" : "[ ]");
     }

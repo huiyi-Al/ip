@@ -20,6 +20,10 @@ public class commandParser {
         this.taskService = taskService;
     }
 
+    /**
+     * Executes commands based on the read input
+     * terminal the running process if user exit the system
+     */
     public void run(){
         boolean isRunning = true;
         while(isRunning) {

@@ -5,6 +5,9 @@ import ui.DateTimeService;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Adds an unmarked Deadline task to the task list
+ */
 public class addDeadlineCommand implements Command {
     private TaskService taskService;
     private Deadline deadline;

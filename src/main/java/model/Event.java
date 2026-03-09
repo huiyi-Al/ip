@@ -1,10 +1,20 @@
 package model;
 
-
+/**
+ * Represents an Event Task
+ * Contains a starting date and an ending date
+ */
 public class Event extends Task{
     private String startTime;
     private String endTime;
 
+    /**
+     * Constructs an Event Task
+     *
+     * @param description  A short description or name of the task
+     * @param startTime    The date for task start
+     * @param endTime      The date for task end
+     */
     public Event(String description, String startTime, String endTime) {
         super(description);
         this.startTime = startTime;

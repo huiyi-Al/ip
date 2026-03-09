@@ -3,7 +3,9 @@ package command;
 import ui.TaskService;
 import ui.ui;
 
-
+/**
+ * Unmarks the status of a task that has been set to done.
+ */
 public class UnmarkCommand implements Command {
     private TaskService taskService;
     private ui ui;

@@ -4,6 +4,9 @@ import model.Task;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Deletes a task from the tasklist.
+ */
 public class DeleteCommand implements Command {
     private TaskService taskService;
     private ui ui;

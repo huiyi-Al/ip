@@ -3,6 +3,9 @@ package command;
 import ui.ui;
 import ui.TaskService;
 
+/**
+ * Searches for all tasks with description containing specific keywords.
+ */
 public class FindCommand implements Command{
     private TaskService taskService;
     private ui ui;

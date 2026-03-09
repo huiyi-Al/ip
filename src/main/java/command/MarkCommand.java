@@ -3,7 +3,9 @@ package command;
 import ui.TaskService;
 import ui.ui;
 
-
+/**
+ * Marks the status of a specific task as done.
+ */
 public class MarkCommand implements Command {
     private TaskService taskService;
     private ui ui;

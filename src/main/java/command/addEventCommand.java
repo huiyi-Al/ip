@@ -5,6 +5,9 @@ import ui.DateTimeService;
 import ui.TaskService;
 import ui.ui;
 
+/**
+ * Adds an unmarked Event task to the task list
+ */
 public class addEventCommand implements Command {
     private TaskService taskService;
     private ui ui;

@@ -77,8 +77,4 @@ public class ui {
     public void invalidTask() {
         System.out.println("Invalid task number!");
     }
-
-    public void invalidTimeFormatter(){
-
-    }
 }

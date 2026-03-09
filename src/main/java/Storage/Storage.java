@@ -13,9 +13,12 @@ import java.util.ArrayList;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-
-
+/**
+ * Handles all file storage operation for tasks
+ * Saves the tasks in the hard disk automatically
+ */
 public class Storage {
+    /** The path to the task storage file */
     private final String filePath;
     private final String folderPath;
 
@@ -24,6 +27,10 @@ public class Storage {
         this.folderPath = filePath.substring(0, filePath.lastIndexOf(File.separator));
     }
 
+    /**
+     * Loads file from the storage file
+     * @return A list of tasks loaded form the file
+     */
     public List<Task> load() {
         List<Task> tasks = new ArrayList<>();
         File file = new File(filePath);
@@ -72,6 +79,12 @@ public class Storage {
         }
         return tasks;
     }
+
+    /**
+     * Saves all tasks to the storage file.
+     * Each task is converted to its file representation
+     * @param tasks The list of tasks to be saved to the file
+     */
 
     public void save(List<Task> tasks) {
         File folder = new File(folderPath);
