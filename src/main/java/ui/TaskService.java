@@ -65,7 +65,7 @@ public class TaskService {
     public List<Task> searchTask(String taskName) {
         List<Task> selectedTasks = new ArrayList<>();
         for (Task task : tasks) {
-            if (task.description.contains(taskName)) {
+            if (task.description.toLowerCase().contains(taskName.trim().toLowerCase())) {
                 selectedTasks.add(task);
             }
         }

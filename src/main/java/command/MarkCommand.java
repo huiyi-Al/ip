@@ -22,7 +22,7 @@ public class MarkCommand implements Command {
         try {
             taskId = Integer.parseInt(arguments) - 1;
             if (taskService.getTask(taskId).getStatus().equals("[X]")) {
-                System.out.println("This task is already marked");
+                ui.showMessage("This task is already marked");
             } else {
                 taskService.markTask(taskId);
                 ui.showMessage("Nice! I've mared this as done:\n " +

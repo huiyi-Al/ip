@@ -22,7 +22,7 @@ public class UnmarkCommand implements Command {
         try {
             taskId = Integer.parseInt(argument) - 1;
             if (taskService.getTask(taskId).getStatus().equals("[ ]")) {
-                System.out.println("This task is already unmarked");
+                ui.showMessage("This task is already unmarked");
             } else {
                 taskService.unmarkTask(taskId);
                 ui.showMessage("Ok, I will unmark this task:\n" +
