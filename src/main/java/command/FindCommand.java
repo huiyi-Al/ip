@@ -5,6 +5,7 @@ import ui.TaskService;
 
 /**
  * Searches for all tasks with description containing specific keywords.
+ * Searching is case-insensitive
  */
 public class FindCommand implements Command{
     private TaskService taskService;
